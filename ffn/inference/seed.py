@@ -463,8 +463,7 @@ class PolicyInvertOrigins(BaseSeedPolicy):
   def init_coords(self):
     origins_to_invert = storage.load_origins(self.segmentation_dir,
                                              self.corner)
-    points = origins_to_invert.items()
-    points.sort(reverse=True)
+    points = sorted(origins_to_invert.items(), reverse=True)
     self.coords = np.array([origin_info.start_zyx for _, origin_info
                             in points])
 
